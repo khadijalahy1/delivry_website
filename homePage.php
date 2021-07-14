@@ -1,4 +1,10 @@
 <!-- Registration form + Login System  -->
+<?php 
+
+    session_start();
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,22 +18,72 @@
     <!-- Registration form  -->
     <form action="registration.php" method="POST" >
         <label for="">First Name :</label>
-        <input type="text" name="fName"><br/>
+        <input type="text" name="fName">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['fNameErr'];
+
+        }
+        ?>
+        <br/>
 
         <label for="">Last Name :</label>
-        <input type="text" name="lName"><br/>
+        <input type="text" name="lName">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['lNameErr'];
+
+        }
+        ?>
+        <br/>
 
         <label for="">Username :</label>
-        <input type="text" name="userName"><br/>
+        <input type="text" name="userName">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['userNameErr'];
+
+        }
+        ?>
+
+        <br/>
+
 
         <label for="">Password :</label>
-        <input type="password" name="password"><br/>
+        <input type="password" name="password">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['passwordErr'];
+
+        }
+        ?>
+        <br/>
     
         <label for="">phone :</label>
-        <input type="phone" name="phone"><br/>
+        <input type="phone" name="phone">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['phoneErr'];
+
+        }
+        ?>
+        <br/>
     
         <label for="">Email :</label>
-        <input type="email" name="email"><br/>
+        <input type="email" name="email">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['emaileErr'];
+
+        }
+        ?>
+        <br/>
     
         <label for="">gender :</label>
         <select name="gender" id="">
