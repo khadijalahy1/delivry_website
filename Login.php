@@ -35,21 +35,25 @@ else{
     //check password
     $idUser=$resultUser['id'];
     $responsePassword=$db->query('SELECT * FROM user WHERE id = \''.$idUser.'\' AND password = \''.$password.'\'' );
-    if ($responsePassword==null){
+    $resultPassword=$responsePassword->fetch();
+  
+    if ($resultPassword==null){
 
         $_SESSION['LoginErr']['passwordErr']='Wrong password Retry again !';
     }
     else{
         //variable that stocks the id of the user to use it later
        $_SESSION['userId']=$idUser;
-       $_SESSION['msg']='User Logged successufully';
+       $_SESSION['LoginErr']['msg']='User Logged successufully';
 
     }
-
+    
 
 }
+print_r($_SESSION['LoginErr']);
 
 header('Location:loginPage.php');
+
 
 
 

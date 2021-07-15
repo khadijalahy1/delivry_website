@@ -35,7 +35,7 @@
         <?php 
         if(isset($_SESSION['LoginErr']['msg'])&&$_SESSION['LoginErr']['msg']!='')
         {
-            echo '  *'.$_SESSION['LoginErr']['msg'];
+            echo $_SESSION['LoginErr']['msg'];
         }
         ?>
 
