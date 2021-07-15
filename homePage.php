@@ -2,6 +2,7 @@
 <?php 
 
     session_start();
+ 
 
 
 ?>
@@ -16,11 +17,12 @@
 </head>
 <body>
     <!-- Registration form  -->
+    
     <form action="registration.php" method="POST" >
         <label for="">First Name :</label>
         <input type="text" name="fName">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['fNameErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['fNameErr'];
 
@@ -31,7 +33,7 @@
         <label for="">Last Name :</label>
         <input type="text" name="lName">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['lNameErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['lNameErr'];
 
@@ -42,7 +44,7 @@
         <label for="">Username :</label>
         <input type="text" name="userName">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr'])  && $_SESSION['infoErr']['userNameErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['userNameErr'];
 
@@ -55,9 +57,9 @@
         <label for="">Password :</label>
         <input type="password" name="password">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['passwordErr']!='' )
         {
-            echo '*'.$_SESSION['infoErr']['passwordErr'];
+            echo '  *'.$_SESSION['infoErr']['passwordErr'];
 
         }
         ?>
@@ -66,7 +68,7 @@
         <label for="">phone :</label>
         <input type="phone" name="phone">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['phoneErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['phoneErr'];
 
@@ -77,7 +79,7 @@
         <label for="">Email :</label>
         <input type="email" name="email">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['emailErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['emailErr'];
 
@@ -94,7 +96,7 @@
         <label for="">Address :</label>
         <input type="text" name="address">
         <?php  
-        if(isset($_SESSION['infoErr']))
+        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['addressErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['addressErr'];
 

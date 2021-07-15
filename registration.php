@@ -69,7 +69,7 @@ function isUsed($myInfo)
     $response = $db->query('SELECT COUNT(userName) FROM user WHERE ' . $myInfo . '= \'' . $_POST[$myInfo] . '\'');
     $data = $response->fetch();
     if ($data['0'] != 0) {
-        $GLOBALS['Error'][$myInfo . 'Err'] = ' This ' . $myInfo . 'is already used';
+        $GLOBALS['Error'][$myInfo . 'Err'] = ' This ' . $myInfo . ' is already used';
     }
 }
 
