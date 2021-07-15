@@ -79,7 +79,7 @@
         <?php  
         if(isset($_SESSION['infoErr']))
         {
-            echo '*'.$_SESSION['infoErr']['emaileErr'];
+            echo '*'.$_SESSION['infoErr']['emailErr'];
 
         }
         ?>
@@ -92,7 +92,15 @@
         </select><br/>
 
         <label for="">Address :</label>
-        <input type="text" name="address"><br/>
+        <input type="text" name="address">
+        <?php  
+        if(isset($_SESSION['infoErr']))
+        {
+            echo '*'.$_SESSION['infoErr']['addressErr'];
+
+        }
+        ?>
+        <br/>
     
         <input type="submit" value="Register">
     
