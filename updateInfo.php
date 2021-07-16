@@ -172,7 +172,7 @@ function updateUser()
         die('Error :' . $e->getMessage());
     }
     //add informations to the User Table
-    $req = $db->prepare('INSERT INTO user(fName,lName,phone,email,password,gender,userName) VALUES(:fName, :lName, :phone, :email, :password, :gender,:userName)');
+   
     $req = $db->prepare('UPDATE user SET fName=:fName , lName=:lName,userName=:userName,phone=:phone,email=:email,password=:password,gender=:gender WHERE id='.$_SESSION['userId']);
     $req->execute(array(
         'fName' => $_POST['fName'],

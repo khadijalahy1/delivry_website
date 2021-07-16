@@ -146,7 +146,7 @@
             <tr>
                 <form action="deleteAddress.php" method="Post">
                     <td><?php echo $userAddressData['address'] ?></td>
-                    <input type="hidden" name="addressValue" value="<?php echo $userAddressData; ?>">
+                    <input type="hidden" name="addressValue" value="<?php echo $userAddressData['address']; ?>">
                     <td><input type="submit" value="delete address"></td>
 
 
