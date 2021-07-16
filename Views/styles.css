@@ -218,10 +218,11 @@ img {
 /* Fading animation */
 
 .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+    
+    
 }
 
 @-webkit-keyframes fade {
@@ -251,4 +252,8 @@ img {
     .text {
         font-size: 11px
     }
+}
+
+#heroSlider{
+    margin-left: auto;margin-right: 0;
 }
