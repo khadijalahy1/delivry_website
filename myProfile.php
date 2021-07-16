@@ -124,9 +124,17 @@
 
     <!-- Form2 : Add address -->
     <p>
-    <form action="newAddress.php">
-        <input type="text" name="address">
+    <form action="newAddress.php" method="POST">
+        <input type="text" name="newAddress" placeholder="Num,Num Bloc,rue,city">
         <input type="submit" value="add new address">
+        <?php
+        if(isset($_SESSION['newAddressErr']) && $_SESSION['newAddressErr']!='')
+        {
+            echo $_SESSION['newAddressErr'];
+
+        }
+
+        ?>
     </form>
 
     </p>
