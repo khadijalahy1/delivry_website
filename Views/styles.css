@@ -3,6 +3,7 @@ body {
     background-color: #ffffff;
     background-image: url("back.png");
     font-size: medium;
+    max-width: 960px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
 }
 
 .form-control {
