@@ -31,8 +31,9 @@
     //get all the addresses of this user and store them in array
 
     $responseAddress=$db->query('SELECT address FROM address WHERE id_user ='.$_SESSION['userId']); 
-    $userAddressData=$responseAddress->fetch();
-    print_r($userAddressData);
+ 
+  
+
 
 
 
@@ -66,7 +67,7 @@
 
     <!-- Form2 : Add address -->
     <p>
-    <form action="newAdress.php">
+    <form action="newAddress.php">
         <input type="text" name="address">
         <input type="submit" value="add new address">
     </form>
@@ -76,9 +77,18 @@
 
     <!-- Table: List of available address+delete address-->
     <table>
-        <tr>
-            
-        </tr>
+        <?php while( $userAddressData=$responseAddress->fetch()){ ?>
+            <tr>
+                <form action="deleteAddress.php" method="Post">
+                <td><?php  echo $userAddressData['address']?></td>
+                <input type="hidden" name="addressValue" value="<?php echo $userAddressData; ?>">
+                <td><input type="submit" value="delete address"></td>
+                
+
+                </form>
+                
+            </tr>
+        <?php } ?>
     </table>
 
     
