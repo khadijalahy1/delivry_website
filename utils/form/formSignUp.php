@@ -13,7 +13,7 @@
 
 
 
-<div id="id01" class="modal">
+<div id="id01" class="modale">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
      <!-- Registration form  -->
