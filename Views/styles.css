@@ -1,10 +1,69 @@
-body {
+@media (min-width:320px)  { 
+
+    /* smartphones, iPhone, portrait 480x320 phones */
+body{
     font-family: 'Varela Round', sans-serif;
     background-color: #ffffff;
     background-image: url("../utils/back.png");
     font-size: medium;
-    max-width: 960px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
+    max-width: 300px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
 }
+ }
+@media (min-width:481px)  { 
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+    body{
+        font-family: 'Varela Round', sans-serif;
+    background-color: #ffffff;
+    background-image: url("../utils/back.png");
+    font-size: medium;
+    max-width: 400px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
+    }
+
+}
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    body{
+        font-family: 'Varela Round', sans-serif;
+    background-color: #ffffff;
+    background-image: url("../utils/back.png");
+    font-size: medium;
+    max-width: 600px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
+    }
+
+}
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+    body{
+        font-family: 'Varela Round', sans-serif;
+        background-color: #ffffff;
+        background-image: url("../utils/back.png");
+        font-size: medium;
+        max-width: 900px; width: 100%; position: relative; margin:auto; line-height: 1.4em; 
+    }
+
+}
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
+    body{
+        font-family: 'Varela Round', sans-serif;
+    background-color: #ffffff;
+    background-image: url("../utils/back.png");
+    font-size: medium;
+    max-width: 960px; width: 100%; position: relative; margin:auto; height: auto; 
+    }
+
+}
+@media (min-width:1281px) { /* hi-res laptops and desktops */
+    body{
+        font-family: 'Varela Round', sans-serif;
+        background-color: #ffffff;
+        background-image: url("../utils/back.png");
+        font-size: medium;
+        max-width: 1280px; width: 100%; position: relative; margin:auto; line-height: 3em; 
+    }
+
+}
+
+
+ 
+ 
 
 .form-control {
     box-shadow: none;
