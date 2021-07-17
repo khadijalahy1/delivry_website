@@ -3,7 +3,7 @@
 
     <?php
 
-     session_start() ;
+    //we should start the session on the page where we are including the navbar
      //initialize variables for showing Logging and showing sign Up
     $_SESSION['showLoggingForm']=false;
     $_SESSION['showSignUpForm']=false;
@@ -11,7 +11,7 @@
     ?>
 
     <nav class="navbar navbar-expand-lg">
-        
+
                 <a href="#" class="navbar-brand"><img src="../utils/Skharnilogo.png" alt="" width="140" height="40" style="margin-left: 10px;"></a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -64,11 +64,13 @@
         <!-- SIGN IN  -->
 
         <?php include '../utils/form/formLogin.php';?>
-        <?php showLoggingform(); ?>
+        
+      
      
            
      <!-- SIGN UP  -->
        <?php include '../utils/form/formSignUp.php';?>
+       
        
     
 

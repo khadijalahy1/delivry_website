@@ -13,8 +13,11 @@
 
 
 
-<div id="id01" class="modale">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+<?php
+function showSignUpForm(){
+  echo '
+  <div id="id01" class="modale">
+  <span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="close" title="Close Modal">&times;</span>
 
      <!-- Registration form  -->
 
@@ -26,7 +29,7 @@
       <p>Please fill in this form to create an account.</p>
       <hr>
      
-        <input type="text" name="fName" placeholder="first Name">
+        <input type="text" name="fName" placeholder="first Name">'?>
         <?php  
         if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['fNameErr']!='')
         {
@@ -34,33 +37,40 @@
 
         }
         ?>
+        <?php
+        echo '
         <br/>
 
       
-        <input type="text" name="lName" placeholder="last Name">
+        <input type="text" name="lName" placeholder="last Name">'?>
         <?php  
-        if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['lNameErr']!='')
+        if(isset($_SESSION["infoErr"]) && $_SESSION["infoErr"]["lNameErr"]!="")
         {
-            echo '*'.$_SESSION['infoErr']['lNameErr'];
+            echo '*'.$_SESSION["infoErr"]["lNameErr"];
 
         }
         ?>
+        <?php 
+        echo'
         <br/>
 
    
-        <input type="text" name="userName" placeholder="username">
+        <input type="text" name="userName" placeholder="username">'?>
         <?php  
-        if(isset($_SESSION['infoErr'])  && $_SESSION['infoErr']['userNameErr']!='')
+        if(isset($_SESSION["infoErr"])  && $_SESSION['infoErr']['userNameErr']!='')
         {
             echo '*'.$_SESSION['infoErr']['userNameErr'];
 
         }
         ?>
 
+
+        <?php echo
+        '
         <br/>
 
 
-        <input type="password" name="password"  placeholder="password">
+        <input type="password" name="password"  placeholder="password">'?>
         <?php  
         if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['passwordErr']!='' )
         {
@@ -68,9 +78,12 @@
 
         }
         ?>
+
+        <?php echo
+        '
         <br/>
     
-        <input type="text" name="phone" placeholder="phone">
+        <input type="text" name="phone" placeholder="phone">'?>
         <?php  
         if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['phoneErr']!='')
         {
@@ -78,9 +91,11 @@
 
         }
         ?>
+        <?php echo
+        '
         <br/>
     
-        <input type="text" name="email" placeholder="email">
+        <input type="text" name="email" placeholder="email">' ?>
         <?php  
         if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['emailErr']!='')
         {
@@ -88,6 +103,9 @@
 
         }
         ?>
+        <?php
+        echo
+        '
         <br/>
     
         
@@ -97,7 +115,7 @@
         </select><br/>
 
 
-        <input type="text" name="address" placeholder="address">
+        <input type="text" name="address" placeholder="address">' ?>
         <?php  
         if(isset($_SESSION['infoErr']) && $_SESSION['infoErr']['addressErr']!='')
         {
@@ -105,6 +123,9 @@
 
         }
         ?>
+        <?php 
+        echo
+        '
         <br/>
     
     
@@ -114,7 +135,7 @@
  
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="document.getElementById(\'id01\').style.display=\'none\'" class="cancelbtn">Cancel</button>
         <button type="submit" class="signupbtn">Sign Up</button>
       </div>
     </div>
@@ -123,6 +144,11 @@
 
 
 </div>
+
+  ';
+}
+
+?>
 
 <script  type="text/javascript" src="./formScript.js"></script>
 
