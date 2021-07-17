@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../utils/form/formStyle.css">
 </head>
 
 <body>
@@ -59,8 +60,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle"><i class="fa fa-user"></i></a>
                         <div class="dropdown-menu">
-                            <a href="#signin" class="dropdown-item" >Sign in</a>
-                            <a href="#signup" class="dropdown-item" >Sign up</a>
+                            <button class="dropdown-item" onclick="document.getElementById('id02').style.display='block'" style="width:auto;" >Sign in</button>
+                            <button class="dropdown-item" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" >Sign up</button>
                         </div>
                     </div>
     
@@ -69,14 +70,7 @@
     
             </nav>
          
-                <div class="wrap">
-                    <div class="search">
-                        <input type="text" class="searchTerm" placeholder="Search for ...">
-                        <button type="submit" class="searchButton">
-                     <i class="fa fa-search"></i>
-                  </button>
-                    </div>
-                </div>
+              
         
             <div style="display: flex;max-width:100%; width: 100%">
                 <div class="col-sm-6 m-auto ">
@@ -118,19 +112,23 @@
                             <div class="mySlides fade">
                                 <div class="numbertext">1 / 3</div>
                                 <img src="../utils/fastfood.png" style="width:100%">
-                                <div class="text" style="font-size: large;"><b>Fast Food</b></div>
+                                
                             </div>
         
                             <div class="mySlides fade">
                                 <div class="numbertext">2 / 3</div>
                                 <img src="../utils/grocery.png" style="width:100%">
-                                <div class="text" style="font-size: large;"> <b> Grocery </b></div>
+                                
+                               
+
+             
+                                
                             </div>
         
                             <div class="mySlides fade">
                                 <div class="numbertext">3 / 3</div>
                                 <img src="../utils/Medicament.png" style="width:100%">
-                                <div class="text" style="font-size: large;"> <b> Pharmacy</b></div>
+                             
                             </div>
         
                             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -151,82 +149,13 @@
     
      
         <!-- SIGN IN  -->
-        <div id="signin" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Sign in</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>UserName/Email/Phone number</label>
-                                <input type="text;email" class="form-control" required>
-                            </div>
-    
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                            </div>
-    
-    
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Sign in">
-                            </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
+
+        <?php include '../utils/form/formLogin.php';?>
      
            
-            <!-- SIGN UP  -->
-            <div id="signup" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">
-                                <h4 class="modal-title">Sign up</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>UserName</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Gender</label>
-                                    <INPUT TYPE="Radio" Name="Gender" Value="Male">Male
-                                    <INPUT TYPE="Radio" Name="Gender" Value="Female">Female
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                                </div>
-            
-                                <div class="form-group">
-                                    <label>Phone Number</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Sign up">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
+        <!-- SIGN UP  -->
+        <?php include '../utils/form/formSignUp.php';?>
+          
 
 
 
@@ -237,6 +166,10 @@
 
 
 </body>
+<script  type="text/javascript" src="../utils/form/formScript.js"></script>
+<script type="text/javascript" src="../utils/form/loginScript.js"></script>
+
+
 <script type="text/javascript" src="scripts.js"></script>
 
 </html>
