@@ -91,7 +91,7 @@
                             <?php
                              if(isset($_SESSION['userId'])){
                                  ?>
-                            <a href=""><button class="dropdown-item"  style="width:auto;" >My profile</button></a>
+                            <a href="myProfile.php"><button class="dropdown-item"  style="width:auto;" >My profile</button></a>
                             <a href="../backend/navBarFunctions.php?do=logout"><button class="dropdown-item" style="width:auto;" >Log Out</button></a>
 
                             <?php
