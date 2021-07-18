@@ -65,6 +65,8 @@
        if(isset($_SESSION['showSignUpForm'])&&$_SESSION['showSignUpForm']){
         
         showSignUpform();
+        $_SESSION['showSignUpForm']=false;
+
     }
 
        ?>
@@ -75,6 +77,7 @@
        if(isset($_SESSION['showLoggingForm'])&&$_SESSION['showLoggingForm']){
        
         showLoggingform();
+        $_SESSION['showLoggingForm']=false;
     }
 
        ?>
