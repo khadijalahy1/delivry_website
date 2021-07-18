@@ -76,8 +76,22 @@
                     <div class="nav-item dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle"><i class="fa fa-user"></i></a>
                         <div class="dropdown-menu">
-                            <a href="../backend/navBarFunctions.php?do=login"><button class="dropdown-item"  style="width:auto;" >Sign in</button></a>
-                            <a href="../backend/navBarFunctions.php?do=register"><button class="dropdown-item" style="width:auto;" >Sign up</button></a>
+                            <?php
+                             if(isset($_SESSION['userId'])){
+                                 ?>
+                            <a href=""><button class="dropdown-item"  style="width:auto;" >My profile</button></a>
+                            <a href="../backend/navBarFunctions.php?do=logout"><button class="dropdown-item" style="width:auto;" >Log Out</button></a>
+
+                            <?php
+                             }
+                             else{
+                             ?>
+                              <a href="../backend/navBarFunctions.php?do=login"><button class="dropdown-item"  style="width:auto;" >Sign In</button></a>
+                            <a href="../backend/navBarFunctions.php?do=register"><button class="dropdown-item" style="width:auto;" >Sign Up</button></a>
+
+                           <?php
+                             }
+                           ?>
                             
                         </div>
                     </div>

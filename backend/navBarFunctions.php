@@ -29,7 +29,14 @@ else if($_GET['do']=='register'){
     
 
 }
-print_r($_SESSION);
+else if($_GET['do']=='logout'){
+    session_destroy();
+ 
+    
+
+}
+
+
 header('Location:/tests/delivry_project/Views/homePage.php');
 
 
