@@ -13,6 +13,7 @@
 function showLoggingform(){
 echo '
 <div id="id02" class="modale">
+<span onclick="document.getElementById(\'id02\').style.display=\'none\'" class="close" title="Close Modal">&times;</span>
 
   <form class="modal-content" action="/action_page.php">
     <div class="container">

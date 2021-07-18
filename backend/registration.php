@@ -208,8 +208,7 @@ checkRegistrationInfo();
 if($registrationIsValid){
     addUser();
 }
-
-//header('Location:/tests/delivry_project/Views/homePage.php');
+header('Location:/tests/delivry_project/Views/homePage.php');
 
 
 ?>

@@ -1,14 +1,7 @@
 
     <!-- Navbar  -->
 
-    <?php
-
-    //we should start the session on the page where we are including the navbar
-     //initialize variables for showing Logging and showing sign Up
-    $_SESSION['showLoggingForm']=false;
-    $_SESSION['showSignUpForm']=false;
-
-    ?>
+    
 
     <nav class="navbar navbar-expand-lg">
 
@@ -50,8 +43,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle"><i class="fa fa-user"></i></a>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" onclick="document.getElementById('id02').style.display='block'" style="width:auto;" >Sign in</button>
-                            <button class="dropdown-item" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" >Sign up</button>
+                            <a href="../backend/navBarFunctions.php?do=login"><button class="dropdown-item"  style="width:auto;" >Sign in</button></a>
+                            <a href="../backend/navBarFunctions.php?do=register"><button class="dropdown-item" style="width:auto;" >Sign up</button></a>
                             
                         </div>
                     </div>
@@ -61,15 +54,30 @@
     
             </nav>
             
-        <!-- SIGN IN  -->
-
-        <?php include '../utils/form/formLogin.php';?>
+    
         
+
       
      
            
      <!-- SIGN UP  -->
-       <?php include '../utils/form/formSignUp.php';?>
+       <?php include '../utils/form/formSignUp.php';
+       if(isset($_SESSION['showSignUpForm'])&&$_SESSION['showSignUpForm']){
+        
+        showSignUpform();
+    }
+
+       ?>
+           <!-- SIGN IN  -->
+      
+
+    <?php include '../utils/form/formLogin.php';
+       if(isset($_SESSION['showLoggingForm'])&&$_SESSION['showLoggingForm']){
+       
+        showLoggingform();
+    }
+
+       ?>
        
        
     
