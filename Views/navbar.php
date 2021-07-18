@@ -2,12 +2,24 @@
     <!-- Navbar  -->
     <?php //get url page and store it into a session
     //connect to dB
+    session_start();
     try{
         $db = new PDO('mysql:host=127.0.0.1;dbname=delivry_website;charset=utf8', 'root', "root");
     
     }
     catch(Exception $e){
         die('Error :'.$e->getMessage());
+    }
+   
+
+    if (isset($_SESSION['userId']))
+    {
+        
+        
+
+    }
+    else{
+        $listOrders=$viewOrder=$orderProcess=$notification=$Inbox=$myStore="../backend/navBarFunctions.php?do=login";
     }
 
      ?>
@@ -37,24 +49,24 @@
                         <div class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">My Orders</a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">List of orders</a>
-                                <a href="#" class="dropdown-item">View Order</a>
-                                <a href="#" class="dropdown-item">Order in process</a>
+                                <a href="<?php echo $listOrders; ?>"  class="dropdown-item">List of orders</a>
+                                <a href="<?php echo $viewOrder; ?>"  class="dropdown-item">View Order</a>
+                                <a href="<?php echo $orderProcess; ?>"  class="dropdown-item">Order in process</a>
     
                             </div>
                         </div>
     
-                        <a href="#" class="nav-item nav-link active">Notifications</a>
-                        <a href="#" class="nav-item nav-link">Inbox</a>
+                        <a href="<?php echo $notification; ?>"  class="nav-item nav-link active">Notifications</a>
+                        <a href="<?php echo $Inbox; ?>"  class="nav-item nav-link">Inbox</a>
                         <a href="#" class="nav-item nav-link">Contact</a>
                         
     
                     </div>
                     
     
-                    <a href="#" class="nav-item nav-link active"><i class="fa fa-shopping-basket"></i></a>
+                    <a href="<?php echo $myStore; ?>"  class="nav-item nav-link active"><i class="fa fa-shopping-basket"></i></a>
                     <?php
-                    session_start();
+                   
                   
                     //if User is logged show his name
                     if(isset($_SESSION['userId']) ){
