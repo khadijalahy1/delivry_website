@@ -140,7 +140,7 @@
         <!-- Form2 : Add address -->
 
         <form action="../backend/newAddress.php" method="POST">
-            <br><input type="text" name="address" placeholder="add a new address here">
+            <br><input type="text" name="newAddress" placeholder="add a new address here">
             <input type="submit" value="add new address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
             <?php
             if (isset($_SESSION['newAddressErr']) && $_SESSION['newAddressErr'] != '') {
@@ -159,7 +159,7 @@
         <table>
             <?php while ($userAddressData = $responseAddress->fetch()) { ?>
                 <tr>
-                    <form action="deleteAddress.php" method="Post">
+                    <form action="../backend/deleteAddress.php" method="Post">
                         <td><?php echo $userAddressData['address'] ?></td>
                         <input type="hidden" name="addressValue" value="<?php echo $userAddressData['address']; ?>" >
                         <input type="submit" value="delete address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">

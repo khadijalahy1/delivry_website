@@ -19,5 +19,5 @@ echo 'DELETE FROM address WHERE id_user=:id_user AND address=:addressValue ';
 echo  $_SESSION['userId'];
 echo $_POST['addressValue'];
 
-header('Location:myProfile.php');
+header('Location:/tests/delivry_project/Views/myProfile.php');
 ?>

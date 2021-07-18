@@ -45,7 +45,7 @@ $addressData=$responseAddress->fetch();
 
     }
     
-header('Location:myProfile.php');
+    header('Location:/tests/delivry_project/Views/myProfile.php');
    
     
 
