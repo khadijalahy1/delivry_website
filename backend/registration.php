@@ -208,6 +208,9 @@ checkRegistrationInfo();
 if($registrationIsValid){
     addUser();
 }
+else{
+    $_SESSION['showSignUpForm']=true;
+}
 header('Location:/tests/delivry_project/Views/homePage.php');
 
 

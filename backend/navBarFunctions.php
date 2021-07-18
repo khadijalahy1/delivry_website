@@ -5,6 +5,7 @@ if($_GET['do']=='login'){
     echo 'am Logging';
     $_SESSION['showLoggingForm']=true;
     $_SESSION['showSignUpForm']=false;
+    
    
 }
 else if($_GET['do']=='register'){

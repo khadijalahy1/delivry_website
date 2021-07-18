@@ -47,12 +47,16 @@ else{
        $_SESSION['LoginErr']['msg']='User Logged successufully';
 
     }
-    
+   
 
 }
+if($_SESSION['LoginErr']['msg']==''){
+    $_SESSION['showLoggingForm']=true;
+}
+
 print_r($_SESSION['LoginErr']);
 
-header('Location:loginPage.php');
+header('Location:/tests/delivry_project/Views/homePage.php');
 
 
 

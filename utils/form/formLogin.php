@@ -29,7 +29,7 @@ echo '
         }
         ?>
     <?php
-       echo'<br/><input type="password" placeholder="Enter password" name="password" ><br/>'
+       echo'<br/><input type="password" placeholder="Enter password" name="password" >'
       ?>
        <?php 
         if(isset($_SESSION['LoginErr']['passwordErr'])&&$_SESSION['LoginErr']['passwordErr']!='')
@@ -39,6 +39,7 @@ echo '
         ?>
         <?php
         echo '
+        <br/>
         <div class="clearfix">
         <button type="button" onclick="document.getElementById(\'id02\').style.display=\'none\'" class="cancelbtn">Cancel</button>
         <button type="submit" class="signupbtn">Sign In</button>
