@@ -198,5 +198,5 @@ if($updateIsValid){
 
 }
 
-header('Location:myProfile.php');
+header('Location:/tests/delivry_project/Views/myProfile.php');
 ?>
