@@ -34,7 +34,7 @@ if($resultUser==null){
 else{
     //check password
     $idUser=$resultUser['id'];
-    $responsePassword=$db->query('SELECT * FROM user WHERE id = \''.$idUser.'\' AND password = \''.$password.'\'' );
+    $responsePassword=$db->query('SELECT * FROM user WHERE id = '.$idUser.' AND password = \''.$password.'\'' );
     $resultPassword=$responsePassword->fetch();
   
     if ($resultPassword==null){

@@ -60,11 +60,13 @@ body{
 }
 
 .navbar {
-    background: rgba(255, 255, 255, 0);
+
+    background-color: rgba(56, 233, 21, 0);
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 0;
-    position: relative;
+    position:relative;
+    width: 40%;
 }
 
 .navbar .navbar-brand {

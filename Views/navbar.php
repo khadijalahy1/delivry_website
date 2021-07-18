@@ -1,5 +1,17 @@
 
     <!-- Navbar  -->
+    <?php //get url page and store it into a session
+    //connect to dB
+    try{
+        $db = new PDO('mysql:host=127.0.0.1;dbname=delivry_website;charset=utf8', 'root', "root");
+    
+    }
+    catch(Exception $e){
+        die('Error :'.$e->getMessage());
+    }
+
+     ?>
+
 
     
 
@@ -10,8 +22,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-                    <div class="navbar-nav">
+                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start" style=" white-space: nowrap;">
+                    <div class="navbar-nav" >
                         <a href="#" class="nav-item nav-link">Home</a>
                         <div class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Category</a>
@@ -35,10 +47,31 @@
                         <a href="#" class="nav-item nav-link active">Notifications</a>
                         <a href="#" class="nav-item nav-link">Inbox</a>
                         <a href="#" class="nav-item nav-link">Contact</a>
+                        
     
                     </div>
+                    
     
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-shopping-basket"></i></a>
+                    <?php
+                    session_start();
+                  
+                    //if User is logged show his name
+                    if(isset($_SESSION['userId']) ){
+                     
+                        $response=$db->query('SELECT * FROM user WHERE id = '.$_SESSION['userId'] );
+                        $userData=$response->fetch();
+                        $fName=$userData['fName'];
+                        $lName=$userData['lName'];
+
+                   
+
+                     ?>
+                    <a href="#" class="nav-item nav-link active" ><?php echo $fName.' '.$lName ?></a>
+                    <?php
+                     }
+                    ?>
+
     
                     <div class="nav-item dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle"><i class="fa fa-user"></i></a>
@@ -48,6 +81,7 @@
                             
                         </div>
                     </div>
+                    
     
     
                 </div>
