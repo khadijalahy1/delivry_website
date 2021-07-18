@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,41 +19,41 @@
 </head>
 
 <body>
- 
+
 
 
     <!-- Navbar  -->
     <?php include './navbar.php' ?>
     <?php
 
-//Connect To dB
-try {
-    $db = new PDO('mysql:host=127.0.0.1;dbname=delivry_website;charset=utf8', 'root', "root");
-} catch (Exception $e) {
-    die('Error :' . $e->getMessage());
-}
-//get data from user table
+    //Connect To dB
+    try {
+        $db = new PDO('mysql:host=127.0.0.1;dbname=delivry_website;charset=utf8', 'root', "root");
+    } catch (Exception $e) {
+        die('Error :' . $e->getMessage());
+    }
+    //get data from user table
 
-$responseUser = $db->query('SELECT * FROM user WHERE id =' . $_SESSION['userId']);
-$userData = $responseUser->fetch();
-$fName = $userData['fName'];
-$lName = $userData['lName'];
-$phone = $userData['phone'];
-$email = $userData['email'];
-$password = $userData['password'];
-$gender = $userData['gender'];
-$userName = $userData['userName'];
+    $responseUser = $db->query('SELECT * FROM user WHERE id =' . $_SESSION['userId']);
+    $userData = $responseUser->fetch();
+    $fName = $userData['fName'];
+    $lName = $userData['lName'];
+    $phone = $userData['phone'];
+    $email = $userData['email'];
+    $password = $userData['password'];
+    $gender = $userData['gender'];
+    $userName = $userData['userName'];
 
-//get all the addresses of this user and store them in array
+    //get all the addresses of this user and store them in array
 
-$responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_SESSION['userId']);
-
-
+    $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_SESSION['userId']);
 
 
 
 
-?>
+
+
+    ?>
 
 
 
@@ -140,29 +139,36 @@ $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_
 
         <!-- Form2 : Add address -->
 
-        <form action="newAddress.php">
+        <form action="../backend/newAddress.php" method="POST">
             <br><input type="text" name="address" placeholder="add a new address here">
-            <br><input type="submit" value="add new address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
+            <input type="submit" value="add new address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
+            <?php
+            if (isset($_SESSION['newAddressErr']) && $_SESSION['newAddressErr'] != '') {
+                echo $_SESSION['newAddressErr'];
+            }
+
+            ?>
 
         </form>
 
         </p>
 
 
+        
         <!-- Table: List of available address+delete address-->
         <table>
+            <?php while ($userAddressData = $responseAddress->fetch()) { ?>
+                <tr>
+                    <form action="deleteAddress.php" method="Post">
+                        <td><?php echo $userAddressData['address'] ?></td>
+                        <input type="hidden" name="addressValue" value="<?php echo $userAddressData['address']; ?>" >
+                        <input type="submit" value="delete address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
 
-            <tr>
-                <form action="deleteAddress.php" method="Post">
-                    <td></td>
-                    <input type="hidden" name="addressValue" value="<?php echo $userAddressData; ?>">
-                    <td><input type="submit" value="delete address" style="border-radius: 30%; margin-left: 555%;width: 135%; background-color: #eb5844; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></td>
 
+                    </form>
 
-                </form>
-
-            </tr>
-
+                </tr>
+            <?php } ?>
         </table>
     </div>
 
@@ -191,7 +197,4 @@ $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_
 </body>
 
 
-
-
-</html>
 
