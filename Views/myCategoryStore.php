@@ -18,7 +18,7 @@
     // get all the id of all the stores where category=id category
 
 
-    $responseStore = $db->query('SELECT DISTINCT storeIcon, storeAddress, storeName
+    $responseStore = $db->query('SELECT DISTINCT storeIcon, storeAddress, storeName,idStore
     FROM store
     INNER JOIN article ON store.id=article.idStore
     WHERE idCategory='.$_GET['categoryId'].'
@@ -37,7 +37,7 @@
 
              ?>
              <td>
-                 <a href=""><img src="<?php echo $myStores['storeIcon']?>" alt=""></a></br>
+             <a href="<?php echo "myStore.php?storeId=".$myStores['idStore'] ?>"><img src="<?php echo $myStores['storeIcon']?>" alt=""></a></br>
                  <div><?php echo $myStores['storeName']?> </div>
                 
              </td>
