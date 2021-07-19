@@ -128,12 +128,7 @@
                     </select><br />
                 </div>
 
-                <input type="submit" value="update" style="border-radius: 30%;width: 20%;margin-left: 80%; background-color:turquoise; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                <?php
-                if (isset($_SESSION['infoUpdateErr']) && $_SESSION['infoUpdateErr']['msg'] != '') {
-                    echo $_SESSION['infoUpdateErr']['msg'];
-                }
-                ?>
+               
             </div>
         </form>
 
@@ -141,7 +136,9 @@
 
         <form action="../backend/newAddress.php" method="POST">
             <br><input type="text" name="newAddress" placeholder="add a new address here">
-            <input type="submit" value="add new address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
+            <button type="submit"  style="margin-left: 90% ;background-color: transparent; width: 10%; ">
+                <i style="font-size:24px; color: green;" class="fa fa-plus-square"></i> 
+            </button>
             <?php
             if (isset($_SESSION['newAddressErr']) && $_SESSION['newAddressErr'] != '') {
                 echo $_SESSION['newAddressErr'];
@@ -162,15 +159,21 @@
                     <form action="../backend/deleteAddress.php" method="Post">
                         <td><?php echo $userAddressData['address'] ?></td>
                         <input type="hidden" name="addressValue" value="<?php echo $userAddressData['address']; ?>" >
-                        <input type="submit" value="delete address" style="border-radius: 30%;margin-left: 82% ;background-color: green; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 20%;">
-
-
+                        <button type="submit"  style="background-color: transparent;  font-size: 24px;margin-left: 90%;width: 10%;">
+                            <i style="font-size:24px ; color: red;" class="fa fa-minus-square"></i>
+                        </button>
                     </form>
 
                 </tr>
             <?php } ?>
         </table>
     </div>
+    <input type="submit" value="Save changes" style="border-radius: 30%;margin-left: 78%; background-color:turquoise; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 10%; margin-top: 2%; margin-bottom: 2%;">
+                <?php
+                if (isset($_SESSION['infoUpdateErr']) && $_SESSION['infoUpdateErr']['msg'] != '') {
+                    echo $_SESSION['infoUpdateErr']['msg'];
+                }
+                ?>
 
 
 
@@ -195,6 +198,3 @@
 
 
 </body>
-
-
-
