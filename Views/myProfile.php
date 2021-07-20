@@ -124,6 +124,7 @@
 
         <form action="../backend/newAddress.php" method="POST">
             <br><input type="text" name="newAddress" placeholder="add a new address here">
+            <input type="hidden" name="currentView" value="myProfile.php">
             <button type="submit" style="margin-left: 90% ;background-color: transparent; width: 10%; ">
                 <i style="font-size:24px; color: green;" class="fa fa-plus-square"></i>
             </button>

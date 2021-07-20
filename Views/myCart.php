@@ -25,6 +25,10 @@
 
 
     );
+    //get all adress of the user
+    $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_SESSION['userId']);
+   
+   
 
 
 
@@ -71,13 +75,23 @@
     <!-- Address  form2: add address-->
     <p>
         <select name="" id="" class="select">
+            <?php 
+            while($address=$responseAddress->fetch()){
 
-            <option value="">myAdress value</option>
+           print_r($address);
+            ?>
+
+            <option value="<?php echo $address['address'] ?>"><?php echo $address['address'] ?></option>
+            <?php
+            }
+            $responseAddress->closeCursor();
+             ?>
 
         </select>
 
-    <form action="">
+    <form action="../backend/newAddress.php" method="POST">
         <input type="text" name="newAddress">
+        <input type="hidden" name="currentView" value="myCart.php">
         <input type="submit" value="add new address">
     </form>
 
