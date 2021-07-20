@@ -3,30 +3,18 @@
 
 <head>
     <?php include('head.php') ?>
-  
 
 </head>
 
+
 <body>
-
-
 
     <!-- Navbar  -->
     <?php include './navbar.php' ?>
 
     <?php
 
-
-
-
-
     $responseArticle = $db->query('SELECT * FROM article WHERE idStore=' . $_GET['storeId']);
-
-
-
-
-
-
 
     ?>
 
@@ -41,15 +29,18 @@
 
                 <td>
                     <a href="<?php ?>"><img src="<?php echo $myArticles['iconArticle'] ?>" alt="" style=" display: block;max-width:230px;max-height:95px; width: auto;
- height: auto;"></a></br>
-  
+                    height: auto;"></a></br>
+
                     <div><?php echo $myArticles['nameArticle'] ?> </div>
                     <div><strong><?php echo $myArticles['price'] ?></strong></div>
-                    <div class="number">
-                        <span class="minus">-</span>
-                        <input type="text" value="1" />
-                        <span class="plus">+</span>
-                    </div>
+
+                    <form action="../backend/addItem.php" method="POST">
+                        <input id=demoInput type=number min=0 max=20 name="quantity">
+                        <input type="hidden" name="idArticle" value="<?php echo $myArticles['id']?>">
+
+                        <input type="submit" value="add to my cart">
+                    </form>
+
                     <div><?php echo $myArticles['descriptionArticle'] ?></div>
 
                 </td>
@@ -84,6 +75,9 @@
 
 
 
+
 </body>
+
+
 
 </html>
