@@ -16,16 +16,17 @@
     <!-- Table of commands  form1: delete command-->
     <?php
     //get id command where idOrder=Null + id article +total price
-   
-    $responseCommand = $db->query('SELECT *
+
+    $responseCommand = $db->query(
+                                'SELECT *
                                     FROM article
                                     INNER JOIN command_ordinary ON  command_ordinary.idArticle = article.id
-                                    WHERE idOrder IS NULL AND idUser= '.$_SESSION['userId']
-                                    
-                                
-                                    );
-        
- 
+                                    WHERE idOrder IS NULL AND idUser= ' . $_SESSION['userId']
+
+
+    );
+
+
 
     ?>
     <div class='post-body id=' post-body'>
@@ -33,31 +34,34 @@
             <div class='clear'></div>
             <table cellpadding="0" cellspacing="0" style="text-align: left;">
                 <tbody>
-            
+
                     <tr>
                         <th>Item</th>
                         <th>quantity</th>
                         <td>price </td>
                         <th></th>
                     </tr>
-                <?php while($commandData=$responseCommand->fetch()){?>
-
-                    <tr>
-                        <td><?php echo $commandData['nameArticle']?></td>
-                        <td><?php echo $commandData['quantity'] ?></td>
-                        <td><?php echo $commandData['quantity']*$commandData['price'] ?> </td>
-                        <form action="">
-                        <td>
-                            <input type="submit"rel="nofollow noopener" target="_blank" value="Delete Item">
-                            </td>
-                        </form>
+                    <?php while ($commandData = $responseCommand->fetch()) { ?>
                        
-                    </tr>
-                 
-                <?php
-                }
-                $responseCommand->closeCursor();
-                 ?>
+
+                        <tr>
+                            <td><?php echo $commandData['nameArticle'] ?></td>
+                            <td><?php echo $commandData['quantity'] ?></td>
+                            <td><?php echo $commandData['quantity'] * $commandData['price'] ?> </td>
+                            <form action="../backend/deleteItem.php" method="POST">
+                                <td>
+                                    <input type="hidden" name="idCommand" value="<?php echo $commandData['id']  ?>">
+                                    <input type="submit" rel="nofollow noopener" target="_blank" value="Delete Item">
+
+                                </td>
+                            </form>
+
+                        </tr>
+
+                    <?php
+                    }
+                    $responseCommand->closeCursor();
+                    ?>
                 </tbody>
             </table>
         </div>
