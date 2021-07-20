@@ -15,7 +15,7 @@
     <?php
 
     $responseArticle = $db->query('SELECT * FROM article WHERE idStore=' . $_GET['storeId']);
-
+   
     ?>
 
     <table>
@@ -32,11 +32,12 @@
                     height: auto;"></a></br>
 
                     <div><?php echo $myArticles['nameArticle'] ?> </div>
-                    <div><strong><?php echo $myArticles['price'] ?></strong></div>
+                    <div><strong><?php echo $myArticles['price'].' DH' ?></strong></div>
 
                     <form action="../backend/addItem.php" method="POST">
-                        <input id=demoInput type=number min=0 max=20 name="quantity">
+                        <input  value="1" id=demoInput type=number min=1 max=20 name="quantity" >
                         <input type="hidden" name="idArticle" value="<?php echo $myArticles['id']?>">
+                        <input type="hidden" name="storeId" value="<?php echo $_GET['storeId']?>">
 
                         <input type="submit" value="add to my cart">
                     </form>
