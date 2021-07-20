@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php include('head.php') ?>
+    <link rel="stylesheet" href="tableCommands.css">
+
+</head>
+
+
+<body>
+
+    <!-- Navbar  -->
+    <?php include './navbar.php' ?>
+
+    <!-- Table of commands  form1: delete command-->
+    <?php
+    //get id command where idOrder=Null + id article +total price
+   
+    $responseCommand = $db->query('SELECT *
+                                    FROM article
+                                    INNER JOIN command_ordinary ON  command_ordinary.idArticle = article.id
+                                    WHERE idOrder IS NULL AND idUser= '.$_SESSION['userId']
+                                    
+                                
+                                    );
+        
+ 
+
+    ?>
+    <div class='post-body id=' post-body'>
+        <div itemprop='description'>
+            <div class='clear'></div>
+            <table cellpadding="0" cellspacing="0" style="text-align: left;">
+                <tbody>
+            
+                    <tr>
+                        <th>Item</th>
+                        <th>quantity</th>
+                        <td>price </td>
+                        <th></th>
+                    </tr>
+                <?php while($commandData=$responseCommand->fetch()){?>
+
+                    <tr>
+                        <td><?php echo $commandData['nameArticle']?></td>
+                        <td><?php echo $commandData['quantity'] ?></td>
+                        <td><?php echo $commandData['quantity']*$commandData['price'] ?> </td>
+                        <form action="">
+                        <td>
+                            <input type="submit"rel="nofollow noopener" target="_blank" value="Delete Item">
+                            </td>
+                        </form>
+                       
+                    </tr>
+                 
+                <?php
+                }
+                $responseCommand->closeCursor();
+                 ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Address  form2: add address-->
+    <p>
+        <select name="" id="" class="select">
+
+            <option value="">myAdress value</option>
+
+        </select>
+
+    <form action="">
+        <input type="text" name="newAddress">
+        <input type="submit" value="add new address">
+    </form>
+
+    </p>
+
+
+    <!-- Address  form2: update phone-->
+    <div>
+        <form action="">
+            <input type="text" name="phone">
+            <input type="submit" value="update phone Number">
+        </form>
+
+
+    </div>
+    <!-- Submit Button finalize order-->
+    <form action="" method="">
+        <input type="submit" value="Finalize order">
+    </form>
+    <div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

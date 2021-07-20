@@ -10,8 +10,11 @@ try {
 
 
 if (isset($_SESSION['userId'])) {
+    $myCart='myCart.php';
+    
+
 } else {
-    $listOrders = $viewOrder = $orderProcess = $notification = $Inbox = $myStore = "../backend/navBarFunctions.php?do=login";
+    $listOrders = $viewOrder = $orderProcess = $notification = $Inbox = $myCart = "../backend/navBarFunctions.php?do=login";
 }
 
 ?>
@@ -70,7 +73,7 @@ if (isset($_SESSION['userId'])) {
         </div>
 
 
-        <a href="<?php echo $myStore; ?>" class="nav-item nav-link active"><i class="fa fa-shopping-basket"></i></a>
+        <a href="<?php echo $myCart; ?>" class="nav-item nav-link active"><i class="fa fa-shopping-basket"></i></a>
         <?php
 
 
