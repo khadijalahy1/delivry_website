@@ -15,10 +15,12 @@
 
     <!-- Table of commands  form1: delete command-->
     <?php
+    // (Commands that have idOrder=NULL) ==Commands that are waiting for this order to be finalized
+    //this view contain only commands that are not finalized yet which means that  not have an order yet
     //get id command where idOrder=Null + id article +total price
 
     $responseCommand = $db->query(
-                                'SELECT *
+        'SELECT *
                                     FROM article
                                     INNER JOIN command_ordinary ON  command_ordinary.idArticle = article.id
                                     WHERE idOrder IS NULL AND idUser= ' . $_SESSION['userId']
@@ -26,12 +28,12 @@
 
     );
     //get all adress of the user
-    $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_SESSION['userId']);
+    $responseAddress = $db->query('SELECT * FROM address WHERE id_user =' . $_SESSION['userId']);
     //get user's phone number
-    $responsePhone=$db->query('SELECT phone FROM user WHERE id='.$_SESSION['userId']);
-    $phoneNumber=$responsePhone->fetch();
-   
-   
+    $responsePhone = $db->query('SELECT phone FROM user WHERE id=' . $_SESSION['userId']);
+    $phoneNumber = $responsePhone->fetch();
+
+
 
 
 
@@ -48,8 +50,13 @@
                         <td>price </td>
                         <th></th>
                     </tr>
-                    <?php while ($commandData = $responseCommand->fetch()) { ?>
-                       
+                    <?php
+
+                    while ($commandData = $responseCommand->fetch()) {
+
+
+                    ?>
+
 
                         <tr>
                             <td><?php echo $commandData['nameArticle'] ?></td>
@@ -75,30 +82,7 @@
     </div>
 
 
-    <!-- Address  form2: add address-->
-    <p>
-        <select name="" id="" class="select">
-            <?php 
-            while($address=$responseAddress->fetch()){
 
-           print_r($address);
-            ?>
-
-            <option value="<?php echo $address['address'] ?>"><?php echo $address['address'] ?></option>
-            <?php
-            }
-            $responseAddress->closeCursor();
-             ?>
-
-        </select>
-
-    <form action="../backend/newAddress.php" method="POST">
-        <input type="text" name="newAddress">
-        <input type="hidden" name="currentView" value="myCart.php">
-        <input type="submit" value="add new address">
-    </form>
-
-    </p>
 
 
     <!-- Address  form2: update phone-->
@@ -110,8 +94,43 @@
 
 
     </div>
+    <!-- Address  form2: add address-->
+
+
+
+    <p>
+
+
+    <form action="../backend/newAddress.php" method="POST">
+        <input type="text" name="newAddress">
+        <input type="hidden" name="currentView" value="myCart.php">
+        <input type="submit" value="add new address">
+    </form>
+
+    </p>
     <!-- Submit Button finalize order-->
-    <form action="" method="">
+    <form action="../backend/addOrder.php" method="POST">
+        <div>
+            <select name="addressOrder" id="" class="select">
+
+                <?php
+                while ($address = $responseAddress->fetch()) {
+
+
+                ?>
+
+
+                    <option name="addressOrder" value="<?php echo $address['id'] ?>"><?php echo $address['address'] ?></option>
+                <?php
+                }
+                $responseAddress->closeCursor();
+                ?>
+
+            </select>
+
+        </div>
+
+
         <input type="submit" value="Finalize order">
     </form>
     <div>

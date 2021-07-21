@@ -45,4 +45,5 @@ if ($_SESSION['phoneErr'] == '') {
 }
 
 header('Location:/tests/delivry_project/Views/myCart.php' );
+
 ?>
