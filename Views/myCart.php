@@ -27,6 +27,9 @@
     );
     //get all adress of the user
     $responseAddress = $db->query('SELECT address FROM address WHERE id_user =' . $_SESSION['userId']);
+    //get user's phone number
+    $responsePhone=$db->query('SELECT phone FROM user WHERE id='.$_SESSION['userId']);
+    $phoneNumber=$responsePhone->fetch();
    
    
 
@@ -100,8 +103,8 @@
 
     <!-- Address  form2: update phone-->
     <div>
-        <form action="">
-            <input type="text" name="phone">
+        <form action="../backend/updatePhone.php" method="POST">
+            <input type="text" name="phone" value="<?php echo $phoneNumber['phone'] ?>">
             <input type="submit" value="update phone Number">
         </form>
 
