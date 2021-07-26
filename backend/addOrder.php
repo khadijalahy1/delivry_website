@@ -6,41 +6,53 @@ try {
 } catch (Exception $e) {
     die('Error :' . $e->getMessage());
 }
+
+
+
 //get current date and time 
 $currentDate=date("Y-m-d");
 $currentTime= date('H:i:s');
 
 //insert newOrder on order table
+echo $_SESSION['userId'];
 echo $_POST['addressOrder'];
 
-$req = $db->exec('INSERT INTO order(idAddress,idUser) VALUES(3,6)');
+$req = $db->exec('INSERT INTO `order` (`id`, `dateOrder`, `timeOrder`, `idUser`, `idAddress`) VALUES (NULL, "'.$currentDate.'", "'.$currentTime.'", "'.$_SESSION['userId'].'", "'.$_POST['addressOrder'].'");');
 
-echo 'INSERT INTO order(dateOrder,timeOrder,idAddress,idUser) VALUES(:dateOrder,:timeOrder,:idAddress,:idUser)';
+
+
+
 
 
 //get Order Id
 $responseidOrder = $db->query(
-    'SELECT id FROM order WHERE dateOrder=\''.$currentDate.'\' AND timeOrder=\''.$currentTime.'\' AND idUser=' . $_SESSION['userId']
+    'SELECT id FROM `order` WHERE dateOrder=\''.$currentDate.'\' AND timeOrder=\''.$currentTime.'\' AND idUser=' . $_SESSION['userId']
 
 
 );
-echo 'SELECT id FROM order WHERE dateOrder=\''.$currentDate.'\' AND timeOrder=\''.$currentTime.'\' AND idUser=' . $_SESSION['userId'];
+
 $idOrderArray=$responseidOrder->fetch();
 
 $idOrder=$idOrderArray['id'];
-
-//update command table assign the orderId to commands thet have idOrder IS NULL
-$req = $db->prepare('UPDATE command_ordinary SET idOrder=:idOrder WHERE idOrder IS NULL');
-$req->execute(array(
-    
-    'idOrder' => $idOrder,
+echo $idOrder;
 
 
-));
+//update command table assign the orderId to commands that have idOrder IS NULL
+ $do=$db->prepare(' UPDATE command_ordinary SET idOrder=:idOrder WHERE idOrder IS NULL');
+ $do->execute(
+     array(
+         'idOrder'=>$idOrder
 
-//back to myCart View 
+     )
+     );
 
-//header('Location:/tests/delivry_project/Views/myCart.php');
+
+
+
+
+//back to myCart View */
+
+header('Location:/tests/delivry_project/Views/myCart.php');
 
 
 

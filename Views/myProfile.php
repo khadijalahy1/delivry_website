@@ -115,6 +115,12 @@
                         <option value="M">Male</option>
                     </select><br />
                 </div>
+                <input type="submit" value="update informations">
+                <?php
+                if (isset($_SESSION['infoUpdateErr']) && $_SESSION['infoUpdateErr']['msg'] != '') {
+                    echo $_SESSION['infoUpdateErr']['msg'];
+                }
+                ?>
 
 
             </div>
@@ -157,12 +163,8 @@
             <?php } ?>
         </table>
     </div>
-    <input type="submit" value="Save changes" style="border-radius: 30%;margin-left: 78%; background-color:turquoise; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 10%; margin-top: 2%; margin-bottom: 2%;">
-    <?php
-    if (isset($_SESSION['infoUpdateErr']) && $_SESSION['infoUpdateErr']['msg'] != '') {
-        echo $_SESSION['infoUpdateErr']['msg'];
-    }
-    ?>
+   
+
 
 
 
