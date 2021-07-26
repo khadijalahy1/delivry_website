@@ -80,8 +80,8 @@
                     <td><?php echo $totalPrice .'DH'?></td>
                     <td></td>
                     <td>
-                        <form action="">
-                            <input type="hidden" name="" value="">
+                        <form action="../backend/cancelOrder.php" method="POST">
+                            <input type="hidden" name="idOrder" value="<?php echo $dataOrder['id']?>">
                             <input type="submit" value="cancel Order">
                         </form>
                     </td>
