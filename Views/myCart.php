@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+   <!-- Contains commands + order Button -->
 <html lang="en">
 
 <head>
@@ -146,7 +147,7 @@
         <input type="submit" value="Finalize order">
     </form>
 
-    
+
    <?php } ?>
 
 

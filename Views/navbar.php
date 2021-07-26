@@ -11,6 +11,7 @@ try {
 
 if (isset($_SESSION['userId'])) {
     $myCart='myCart.php';
+    $listOrders='myOrders.php';
     
 
 } else {
