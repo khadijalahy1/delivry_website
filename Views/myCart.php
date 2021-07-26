@@ -13,7 +13,7 @@
     <!-- Navbar  -->
     <?php include './navbar.php' ?>
 
-    <!-- Table of commands  form1: delete command-->
+  
     <?php
     // (Commands that have idOrder=NULL) ==Commands that are waiting for this order to be finalized
     //this view contain only commands that are not finalized yet which means that  not have an order yet
@@ -33,11 +33,19 @@
     $responsePhone = $db->query('SELECT phone FROM user WHERE id=' . $_SESSION['userId']);
     $phoneNumber = $responsePhone->fetch();
 
+    //check if there is any new Command 
+    $responseNewCommand = $db->query('SELECT * FROM command_ordinary WHERE idOrder IS NULL');
+    $dataNewCommand=$responseNewCommand->fetch();
+
 
 
 
 
     ?>
+
+      <!-- Table of commands  form1: delete command-->
+
+
     <div class='post-body id=' post-body'>
         <div itemprop='description'>
             <div class='clear'></div>
@@ -83,6 +91,8 @@
 
 
 
+ <!-- Should be displayed only if there is any new command -->
+ <?php if($dataNewCommand){ ?>
 
 
     <!-- Address  form2: update phone-->
@@ -108,7 +118,9 @@
     </form>
 
     </p>
+
     <!-- Submit Button finalize order-->
+
     <form action="../backend/addOrder.php" method="POST">
         <div>
             <select name="addressOrder" id="" class="select">
@@ -133,10 +145,9 @@
 
         <input type="submit" value="Finalize order">
     </form>
-    <div>
 
-    </div>
-
+    
+   <?php } ?>
 
 
 
