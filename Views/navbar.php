@@ -1,6 +1,7 @@
 <!-- Navbar  -->
 <?php //get url page and store it into a session
 //connect to dB
+
 session_start();
 try {
     $db = new PDO('mysql:host=127.0.0.1;dbname=delivry_website;charset=utf8', 'root', "root");

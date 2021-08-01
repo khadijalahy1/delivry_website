@@ -1,7 +1,9 @@
 <?php
 //start session
+
 session_start();
-$_SESSION['LoginErr']=array(
+
+$Errors=array(
     'userErr'=>'',
     'passwordErr'=>'',
     'msg'=>''
@@ -11,8 +13,9 @@ $_SESSION['LoginErr']=array(
 
 //check if the username /phone or email is not an injection and check if it exists
 $userInfo=htmlspecialchars($_POST['userInfo']);
-echo $userInfo;
 $password=htmlspecialchars($_POST['password']);
+$table= ($_POST['side']=="user")?'user':'delivry_man';
+echo $table;
 
 //connect to db
 
@@ -25,38 +28,60 @@ catch(Exception $e){
 }
 
 //check if user exist
-$responseUser=$db->query('SELECT id FROM user WHERE userName = \''.$userInfo.'\' OR phone = \''.$userInfo.'\' OR email= \''.$userInfo.'\'');
-echo 'SELECT id FROM user WHERE userName = \''.$userInfo.'\' OR phone = \''.$userInfo.'\' OR email='.$userInfo.'\'';
+$responseUser=$db->query('SELECT id FROM '.$table.' WHERE userName = \''.$userInfo.'\' OR phone = \''.$userInfo.'\' OR email= \''.$userInfo.'\'');
 $resultUser=$responseUser->fetch();
+print_r($resultUser);
+
 if($resultUser==null){
-    $_SESSION['LoginErr']['userErr']='invalid user info';
+    $Errors['userErr']='invalid user info';
 }
 else{
     //check password
     $idUser=$resultUser['id'];
-    $responsePassword=$db->query('SELECT * FROM user WHERE id = '.$idUser.' AND password = \''.$password.'\'' );
+    $responsePassword=$db->query('SELECT * FROM '.$table.' WHERE id = '.$idUser.' AND password = \''.$password.'\'' );
     $resultPassword=$responsePassword->fetch();
   
     if ($resultPassword==null){
 
-        $_SESSION['LoginErr']['passwordErr']='Wrong password Retry again !';
+        $Errors['passwordErr']='Wrong password Retry again !';
     }
     else{
         //variable that stocks the id of the user to use it later
-       $_SESSION['userId']=$idUser;
-       $_SESSION['LoginErr']['msg']='User Logged successufully';
+        if($table=='user'){
+            $_SESSION['userId']=$idUser;
+
+        }
+      
+       $Errors['msg']='User Logged successufully';
 
     }
    
 
 }
-if($_SESSION['LoginErr']['msg']==''){
-    $_SESSION['showLoggingForm']=true;
+//affectation LoginError
+if($table=='user'){
+    $_SESSION['LoginErr']=$Errors;
+    echo 'I am here user';
+    if($_SESSION['LoginErr']['msg']==''){
+        $_SESSION['showLoggingForm']=true;
+    }
+    
+}
+else{
+    $_SESSION['deliveryLoginErr']=$Errors;
+    echo 'I am here delivery';
+
 }
 
-print_r($_SESSION['LoginErr']);
 
-header('Location:/tests/delivry_project/Views/homePage.php');
+echo ('Login User');
+print_r($_SESSION['LoginErr']);
+echo ('delivery Login error');
+print_r($_SESSION['deliveryLoginErr']);
+
+$location= ($_POST['side']=="user")?'Views/homePage.php':'delivry_man_views/loginPage.php';
+
+header('Location:/tests/delivry_project/'.$location);
 
 
 

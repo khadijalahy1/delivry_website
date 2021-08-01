@@ -21,6 +21,7 @@ echo '
       <h1>Sign In</h1>
      
       <hr>
+      <input type="hidden" name="side" value="user"/>
       <input type="text" placeholder="Login using Email / UserName /phone" name="userInfo" >'?>
     <?php 
         if(isset($_SESSION['LoginErr']['userErr'])&&$_SESSION['LoginErr']['userErr']!='')
