@@ -51,6 +51,9 @@ else{
             $_SESSION['userId']=$idUser;
 
         }
+        else{
+            $_SESSION['deliveryManId']=1;
+        }
       
        $Errors['msg']='User Logged successufully';
 
@@ -59,29 +62,39 @@ else{
 
 }
 //affectation LoginError
+$location='';
 if($table=='user'){
     $_SESSION['LoginErr']=$Errors;
     echo 'I am here user';
     if($_SESSION['LoginErr']['msg']==''){
         $_SESSION['showLoggingForm']=true;
     }
+    $location='Views/homePage.php';
     
 }
 else{
     $_SESSION['deliveryLoginErr']=$Errors;
     echo 'I am here delivery';
+    if($_SESSION['deliveryLoginErr']['msg']==''){
+        $location='delivry_man_views/loginPage.php';
+      
+    }
+    else{
+        $location='delivry_man_views/dashboard.php';
+      
+    
+    }
+    
 
 }
 
 
-echo ('Login User');
-print_r($_SESSION['LoginErr']);
-echo ('delivery Login error');
-print_r($_SESSION['deliveryLoginErr']);
 
-$location= ($_POST['side']=="user")?'Views/homePage.php':'delivry_man_views/loginPage.php';
+echo $location;
 
 header('Location:/tests/delivry_project/'.$location);
+
+
 
 
 
